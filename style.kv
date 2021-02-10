@@ -1,0 +1,48 @@
+<PathSelect>:
+    id:obj
+    BoxLayout:
+        orientation:'vertical'
+        padding:30
+        spacing:30
+
+        FileChooserIconView:
+            id:download_path
+            size_hint:1,0.9
+        Button:
+            text:'Select This Path'
+            font_size:25
+            size_hint:1,0.1
+            on_release:obj.setPath(download_path)
+
+<YouTubeDownloader>:
+    sts:status
+    id:obj
+    BoxLayout:
+        orientation:'vertical'
+        padding:30
+        spacing:30
+        Label:
+            text:'Free Python Youtube Video  Downloader'
+            font_size:20
+            size_hint:1,0.2
+        BoxLayout:
+            TextInput:
+                text:'Paste URL'
+                font_size:20
+                multiline:False
+                size_hint:0.7,0.2
+                id:url
+            Button:
+                text:"Download Path"
+                size_hint:0.3,0.2
+                on_release:app.root.current="ps"
+        Button:
+            text:'Start Downloading'
+            font_size:25
+            on_release:obj.downloadByThread(url.text)
+        Label:
+            text:'Status'
+            id:status
+            font_size:20
+            size_hint:1,0.2
+
